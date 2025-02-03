@@ -31,5 +31,3 @@ In **pgAdmin**, add a new server with the following configuration:
 - **Database:** `postgres-zoomcamp`  
 - **Username:** `kestra`  
 - **Password:** `k3str4`  
-
-After that, you can manage the PostgreSQL database in pgAdmin. 🚀
