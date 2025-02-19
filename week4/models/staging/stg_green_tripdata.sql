@@ -4,41 +4,50 @@
     )
 }}
 
-WITH tripdata AS (
-    SELECT *,
-        ROW_NUMBER() OVER (PARTITION BY VendorID, pickup_datetime) AS rn
-    FROM {{ source('staging', 'green_tripdata_ext') }}
-    WHERE VendorID IS NOT NULL
+with tripdata as 
+(
+  select *,
+    row_number() over(partition by vendorid, lpep_pickup_datetime) as rn
+  from {{ source('staging','green_tripdata_ext') }}
+  where vendorid is not null 
 )
-
-SELECT
+select
     -- identifiers
-    {{ dbt_utils.generate_surrogate_key(['VendorID', 'pickup_datetime']) }} AS tripid,
-    {{ dbt.safe_cast("VendorID", api.Column.translate_type("integer")) }} AS VendorID,
-    {{ dbt.safe_cast("RateCodeID", api.Column.translate_type("integer")) }} AS RateCodeID,
-    {{ dbt.safe_cast("Pickup_locationid", api.Column.translate_type("integer")) }} AS Pickup_locationid,
-    {{ dbt.safe_cast("dropoff_locationid", api.Column.translate_type("integer")) }} AS dropoff_locationid,
-
+    {{ dbt_utils.generate_surrogate_key(['vendorid', 'lpep_pickup_datetime']) }} as tripid,
+    {{ dbt.safe_cast("vendorid", api.Column.translate_type("integer")) }} as vendorid,
+    {{ dbt.safe_cast("ratecodeid", api.Column.translate_type("integer")) }} as ratecodeid,
+    {{ dbt.safe_cast("pulocationid", api.Column.translate_type("integer")) }} as pickup_locationid,
+    {{ dbt.safe_cast("dolocationid", api.Column.translate_type("integer")) }} as dropoff_locationid,
+    
     -- timestamps
-    CAST(pickup_datetime AS TIMESTAMP) AS pickup_datetime,
-    CAST(dropoff_datetime AS TIMESTAMP) AS dropoff_datetime,
-
+    cast(lpep_pickup_datetime as timestamp) as pickup_datetime,
+    cast(lpep_dropoff_datetime as timestamp) as dropoff_datetime,
+    
     -- trip info
-    Store_and_fwd_flag,
-    {{ dbt.safe_cast("passenger_count", api.Column.translate_type("integer")) }} AS passenger_count,
-    CAST(Trip_distance AS NUMERIC) AS Trip_distance,
+    store_and_fwd_flag,
+    {{ dbt.safe_cast("passenger_count", api.Column.translate_type("integer")) }} as passenger_count,
+    cast(trip_distance as numeric) as trip_distance,
+    {{ dbt.safe_cast("trip_type", api.Column.translate_type("integer")) }} as trip_type,
 
     -- payment info
-    CAST(Fare_amount AS NUMERIC) AS Fare_amount,
-    CAST(extra AS NUMERIC) AS extra,
-    CAST(mta_tax AS NUMERIC) AS mta_tax,
-    CAST(Tip_amount AS NUMERIC) AS Tip_amount,
-    CAST(Tolls_amount AS NUMERIC) AS Tolls_amount,
-    CAST(Improvement_surcharge AS NUMERIC) AS Improvement_surcharge,
-    CAST(Total_amount AS NUMERIC) AS Total_amount,
-    COALESCE({{ dbt.safe_cast("Payment_type", api.Column.translate_type("integer")) }}, 0) AS Payment_type,
-    {{ get_payment_type_description("Payment_type") }} AS payment_type_description
+    cast(fare_amount as numeric) as fare_amount,
+    cast(extra as numeric) as extra,
+    cast(mta_tax as numeric) as mta_tax,
+    cast(tip_amount as numeric) as tip_amount,
+    cast(tolls_amount as numeric) as tolls_amount,
+    cast(ehail_fee as numeric) as ehail_fee,
+    cast(improvement_surcharge as numeric) as improvement_surcharge,
+    cast(total_amount as numeric) as total_amount,
+    coalesce({{ dbt.safe_cast("payment_type", api.Column.translate_type("integer")) }},0) as payment_type,
+    {{ get_payment_type_description("payment_type") }} as payment_type_description
+from tripdata
+where rn = 1
 
-FROM tripdata
-WHERE rn = 1
+
+-- dbt build --select <model_name> --vars '{'is_test_run': 'false'}'
+{% if var('is_test_run', default=true) %}
+
+  limit 100
+
+{% endif %}
 
