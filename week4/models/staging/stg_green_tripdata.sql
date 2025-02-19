@@ -7,7 +7,7 @@ with
         where vendorid is not null
     )
 select
-    {{ dbt_utils.generate_surrogate_key([‘field_a’, ‘field_b’[,…]]) }}
+    {{ dbt_utils.generate_surrogate_key(['field_a', 'field_b'[,…]]) }}
     {{ dbt_utils.generate_surrogate_key(["vendorid", "lpep_pickup_datetime"]) }}
     as tripid,
     {{ dbt.safe_cast("vendorid", api.Column.translate_type("integer")) }} as vendorid,
