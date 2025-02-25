@@ -192,3 +192,19 @@ models:
         description: Total amount of all tolls paid in trip.
       - name: Total_amount
         description: The total amount charged to passengers. Does not include cash tips.
+  
+  - name: dim_zones
+    description: "A lookup table for taxi zones, mapping location IDs to boroughs and service zones."
+    columns:
+      - name: locationid
+        description: "Unique ID representing a location."
+        tests:
+          - unique
+          - not_null
+      - name: borough
+        description: "The borough name."
+      - name: zone
+        description: "The specific zone name."
+      - name: service_zone
+        description: "The type of service zone (e.g., 'Green' instead of 'Boro')."
+

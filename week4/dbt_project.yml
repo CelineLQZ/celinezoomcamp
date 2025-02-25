@@ -24,8 +24,12 @@ clean-targets:
 models:
   zoomcamp_week4_project:
     staging:
-      +materialized: view  # Staging models should be views
-    marts:
-      +materialized: table  # Fact and dimension tables should be tables
+      +materialized: view
+      +schema: zoomcamp_week4_hw_staging  
+    core:
+      +materialized: table
+      +schema: zoomcamp_week4_hw_staging  
+
+
 
 
