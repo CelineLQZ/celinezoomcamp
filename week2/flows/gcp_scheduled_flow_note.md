@@ -1,7 +1,3 @@
-以下是一个结构化的 **Markdown 文档**，对 **06_gcp_taxi_scheduled** Flow 进行全面整理，涵盖每个 **任务（task）** 的功能和执行步骤，并对 **关键概念** 进行详细解释。  
-
----
-
 # **Kestra Flow: 06_gcp_taxi_scheduled**
 本 Flow 主要完成：
 1. **下载 NYC Taxi 数据**
