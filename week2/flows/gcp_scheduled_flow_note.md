@@ -92,10 +92,12 @@ This Kestra Flow automates the process of extracting, storing, and managing NYC 
 **yellow_tripdata**
 - 主表，内部表
 - 数据清洗去重后合并成主表信息
+  
 **yellow_tripdata_YYYY_MM_ext**
 - 创建 BigQuery 外部表（yellow_tripdata_2019_01_ext）
 - 数据源：gs://bucket/yellow_tripdata_2019-01.csv
 - 文件格式：CSV
+
 **yellow_tripdata_YYYY_MM**
 - 生成 unique_row_id，避免重复数据
 - 添加 filename 字段，记录数据来源
