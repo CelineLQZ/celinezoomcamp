@@ -8,17 +8,6 @@ tasks:
     kvType: JSON
     value: |
       {
-        "type": "service_account",
-        "project_id": "kestra-sandbox-449620",
-        "private_key_id": "e168bd0cefb77037c6b542e7106012ee9b6d78dd",
-        "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCVVu9n+6N79t/h\nlD6eZNGy2MyEjLxch2xlCJkmnNDOXhYHAn/hq3XIouOyZfdQ/iHfkiRTFN6dYnbM\nZlkJTqyzoUshZRbCGGpRDyn82r6TcP7jtm67TQYwIC9Nc/A8r03p+fpjD5f9iqs1\n+z9TcQOlHMPXbeZNLfT53T8NiZHoeb+6NJDKOvyhXBUtPC2aphdATtqQoSh+vLiW\nXe1XIv8pI2MOPW5SkFcmb+oiAaFlLJe4eafQ1VCtREYGVR5heyBSz21cR9gBh+wr\njpLkPyezwYihLZ5e9+EZjPAeAmiFIL6H4l1AsmMEl2z2omIBaDVrJTqUR4AWuqgK\nn3bAga0PAgMBAAECggEAMIT0tl9y36k3VtZvu818tfMrC1ugLR3QkUjIXVuwmYPG\n+1MMElk/JMcLXGA1iIpwne8gvx92LkMZ3tHX1qbJhHkAbGKoELqW/CwFk8HMDiI1\npe0VL+RYANXMGIl1AXphQYX2nC2qT3U4qAqvqd/7c68TT9BEdUnboDyKKk9KaPF5\n9FPNmUvVgyqvsjzcZLJ0cgc69j4NKM8YOng+d95s2jVEnvNeqgQ+iX1wyd1kMzTq\nRrl06Fv0MYltcU/7tsiE6lbrN23Z1i/sqmhfCLbRUlc2uEo46LgzcxBHFJ0bhfxx\nD8QRGZMUN6Tfmb/hgr+Aw6nTrR3mnxP6aek9ukWbiQKBgQDTINRB6z5rFLmJpSpg\nkXhdVmhoRQwZ6stbhypufEIj8npBKv7c0EzBLaBtPQvUAVrVsajFieabKL+uSH2p\nm+t1cfg/4xTjsHgRjv2XbdqAeH/M43Re+X2czmtDXcw6p4lhRSJgVRJoj2HTFfAw\nfEq+q3PwnxvLNGyjceiFRJXNZwKBgQC1FEdCT9LI7WZXaaUFaTt3gTg+wkkJX6VL\nIFQJW9alZyXlsRvKWuI8HwIEagK7dmGq5g/9uMk6B4Z2aro4zDgZ/BGSnm1v5pbI\nswZeoh3cf13g5e9u1wP+joxARkWgiLDxU+GWgCxQPtDxBN+gEe2vK7lmfS4dRJ8q\n2V3TuhmyGQKBgQCV7Qst4GrLycTTrRlByCusRG8SFG46fVR5o6uLF+wz8L3GR00C\n61yGFeuFh0M+AtRJScbquDmtVyt/DPVHm3SCSzOZ0p0D703kUiFdBmKStn8ytRbv\nVsZPsvnSteoQgOZ6z4hQ1jijTaaPKlYNaEX/zmsfpS0siQbYrkwLTx/94wKBgBGw\nU2204oBiQHcViNtIdlisNNRcoknaIAmAtPTdFdC+jMMtU+umiScaWFYaDP5HCC9r\nnfBJFs8mYQo8TsixmmFfcFAETeh6fAxLALpJ1+TsRD1t+L+5HVjGkAjPVInkEHTi\nnszW5H1KRZrlwPqgBbnw6YGLhO+y/mFvLm06ZrwxAoGAYA9MR4zcGlLqv0LFm9fM\nESxJjSKc95AdYTNwUmt7Pm59pkFsHJVxXZlU2lceqkP701ADaegWyRk61EMdgpYJ\nXPhAqpTowKj6b6tV9D38kPWOPSAj7m/lwLncalHPhvLOV7jdS8AwIFGNgmsPFCg5\nAxTX04qxk7mv1N3jU6XI+1Q=\n-----END PRIVATE KEY-----\n",
-        "client_email": "zoomcamp-celine@kestra-sandbox-449620.iam.gserviceaccount.com",
-        "client_id": "100375327506865048747",
-        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-        "token_uri": "https://oauth2.googleapis.com/token",
-        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/zoomcamp-celine%40kestra-sandbox-449620.iam.gserviceaccount.com",
-        "universe_domain": "googleapis.com"
       }
 
   - id: gcp_project_id
